@@ -1,0 +1,77 @@
+<!doctype html lang="ru">
+<html class="no-js" lang="ru">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        {% block html_head %}{% endblock %}
+        <style>
+            body,html{
+                margin: 0;
+                width: 100%;
+                
+            }
+
+        </style>
+
+    </head>
+
+<body>
+    
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title" style="width:40px;margin:0;padding:0;">
+            <img style="width:50px;margin:0;padding:0;" src="{{ url_for('static', filename='images/favicon.png') }}">
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav">
+        <a href="/home">Home</a>
+          <a href="/rss_edit">RSS</a>
+          <a href="/vk_bot_creator">VKBot</a>
+          <a href="/proxyget">Proxies</a>
+        </div>
+      </div>
+    </div>
+
+
+    {% block content %}
+    {% endblock %}
+<body>
+
+
+<footer class="footer-distributed">
+
+        <div class="footer-left">
+
+        <h3>Информация:</h3>
+        <p class="footer-company-name">antonmarinchenko.ru©2021-{{datayear}}</p>
+        <p class="link">Phone: <a href="tel:+89264946464">+7(926)494-64-64</a></p>
+        <p class="link">Mail:  <a href="mailto:deepblh@gmail.com">deepblh@gmail.com</a></p>
+        <p class="link">Avito: <a href="https://www.avito.ru/moskva/predlozheniya_uslug/3d_pechat_plastikom_3d_modelirovanie_2226124398">3D printing</a></p>
+      </div>
+
+        <div class="footer-right">
+
+        <form action="/mail_request" method="post">
+            <center>
+            <h1>Свяжитесь со мной</h1>
+                <input  autocomplete="off" maxlength="60" type="text" name="email" placeholder="Почта">
+                <input autocomplete="off" maxlength="60" type="text" name="name" placeholder="Имя">
+                <textarea autocomplete="off" maxlength="2000" name="message" placeholder="Сообщение"></textarea>
+                <input name="submit" type="submit" value="Отправить"> 
+                {{ recaptcha }}
+            </center>
+            Нажимая кнопку "Отправить" Вы даёте свое согласие</br> на обработку введенной персональной информации</br> в соответствии с Федеральным Законом №152-ФЗ </br>от 27.07.2006 "О персональных данных"
+            
+        </form>
+
+        </div>
+
+</footer>

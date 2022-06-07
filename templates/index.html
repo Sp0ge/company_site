@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block html_head %}
+  <link href="{{ url_for('static', filename='css/home.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+  <center>
+    <div class="naming">
+      <h1>Антон Маринченко</h1>
+      <h2>Разработчик & Програмист & Моделер & Оператор 3D печати</h2>
+        <ul>
+          <li><a href="https://vk.com/soul_slayer"><img class="vk-icon" src="{{ url_for('static', filename='images/icons/vk-icon.png') }}"></a></li>
+          <li><a href="https://github.com/Sp0ge"><img class="github-icon" src="{{ url_for('static', filename='images/icons/github-icon.png') }}"></a></li>
+        </ul>
+    </div>
+  </center>
+
+
+  <div class='articles_list'>
+    <ul>
+        {%for el in articles%}
+        <li>
+            <div class="post">
+                <h1>{{ el.title }}</h1>
+                <div class="text_place">
+                    <pre>{{el.text}}</pre>
+                </div>
+                {% if auth==True: %}
+                    <button class="del"><a href="/post/{{el.id}}/del">Remove Post   {{el.id}}<a></button>
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+<div>
+{% endblock %}
