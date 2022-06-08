@@ -1,0 +1,35 @@
+<head>
+    <link href="{{ url_for('static', filename='css/navbar.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/control_panel.css') }}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    {%block body%}
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('logout') }}">logout</a></li>
+            </ul>
+        </nav>
+        </center>
+        <center>
+            <div class="maincontent2">
+                <div class='mails'>
+                    <center>
+                        <h1>Заявки</h1>
+                        {%for em in mails%}
+                        <center>
+                            <div class='mail_block'>
+                            <h5>{{ em.date }}</4>
+                            <h4>{{ em.email }}</h1>
+                            <h3>{{em.name}}</h1>
+                            <pre class="text">{{ em.text }}</pre>
+                            <a class="ans" href="mailto:{{em.email}}">Answer</a>
+                            <a class="del" href="/mail/{{em.id}}/del">Remove mail</a>
+                            </div>
+                        </center>
+                    {% endfor %}
+                    </center>
+                </div>
+            </div>
+        </center>
+    {% endblock %}
+</body>

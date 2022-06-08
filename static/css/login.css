@@ -1,0 +1,68 @@
+body{
+    background: url( /static/img/bg_login.jpg);
+}
+
+.login_box{
+    font-family:Arial, Helvetica, sans-serif;
+    position: absolute;
+    margin: auto;
+    margin-top: 40px;
+    right: 10%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding-left: 100;
+    padding-right: 100;
+    padding-top: 200;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 700px;
+    border-radius: 10px;
+}
+.login{
+    margin: auto;
+    text-align: center;
+    width: 90%;
+    height: 40px;
+    font-size: 110%;
+}
+br{
+    padding:20px auto;
+}
+input[class=login]{
+    align-items:center;
+    background: none;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid rgb(31, 0, 131);
+}
+
+.login_label{
+    text-align: center;
+    margin: 20px auto;
+    font-size: 50px;
+    font-family:'Goudy Old Style';
+}
+.login-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 2px solid #e8e8e8;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -webkit-box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+            box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+}
+.login-btn:hover {
+    border: 1px solid white;
+   }

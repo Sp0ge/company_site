@@ -1,0 +1,31 @@
+<head>
+    <link href="{{ url_for('static', filename='css/login.css') }}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="login-page">
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+        <div class ="login_box">
+          {% block content %}
+
+
+          <h1 class ="login_label">Sing In</h1>
+          <form action="/admin_log" method='POST'>
+            <p><input class ="login" placeholder="Username" name="username"></p>
+            <p><input class ="login" placeholder="Password" type="password" name="password"></p>
+            <p><input class ="login-btn" value="Войти" type="submit"></p>
+           </form>
+
+           
+          {% endblock %}
+        <div>
+
+    </div>
+  </div>
+</body
