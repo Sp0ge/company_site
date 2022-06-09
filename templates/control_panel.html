@@ -20,10 +20,16 @@
                             <div class='mail_block'>
                             <h5>{{ em.date }}</5>
                             <h4>{{ em.email }}</h4>
-                            <h3>{{em.name}}</h1>
+                            <h4>{{ em.tel }}</h4>
+                            <h3>{{em.name}}</h3>
+                            <h3>{{em.subject}}</h3>
+                            <h3>{{em.client}}</h3>
                             <pre class="text">{{ em.text }}</pre>
-                            <a class="ans" href="mailto:{{em.email}}">Answer</a>
-                            <a class="del" href="/mail/{{em.id}}/del">Remove mail</a>
+                            <a class="ans" href="mailto:{{em.email}}">Почта</a>
+                            <a class="ans" href="tel:{{em.tel}}">Звонок</a>
+                            <form action="/mail/{{em.id}}/del" onSubmit="return confirm('Для удаления заявки нажмите OK'); " class="del">
+                                <input name="del" type="submit" value="Удалить">
+                            </form>
                             </div>
                         </center>
                     {% endfor %}

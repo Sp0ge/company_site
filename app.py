@@ -17,7 +17,7 @@ recaptcha = ReCaptcha(app)
 app.secret_key='Lk2kIC1X1RpyJSkMqAfJJltF4JkUidId4S3cpmuzxmyyxjZw6IR17Ac75tA6XNS5HDtZKRHbDaQ9zHw8V2jMSaPGfSKO2dEnif63'
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'log'
+login_manager.login_view = 'admin_log'
 
 
 
@@ -44,6 +44,9 @@ class Mail_request(db.Model):
     name = db.Column(db.String(60), nullable=False)
     email = db.Column(db.String(60), nullable=False)
     text = db.Column(db.Text, nullable=False)
+    tel = db.Column(db.String(60), nullable=False)
+    subject = db.Column(db.String(60), nullable=False)
+    client = db.Column(db.String(60), nullable=False)
     date = db.Column(db.DateTime, default=datetime.now().replace(microsecond=0))
     def __repr__ (self):
         return '<Mail_request %r>' % self.id
@@ -78,8 +81,7 @@ def admin_login():
         user = User.query.filter_by(username=user).first()
         password = User.query.filter_by(password=password).first()
         if not user or not password:
-            flash('Invalid username or password')
-            return redirect(url_for('/admin_log'))
+            return 'Invalid username or password'
         else:
             usr = db.session.query(User).first()
             login_user(usr)
@@ -90,7 +92,7 @@ def admin_login():
 @app.route('/control_panel',methods=['POST','GET'])
 @login_required
 def control_panel():
-    mails = Mail_request.query.order_by(Mail_request.date.desc()).all()
+    mails = Mail_request.query.all()
     return render_template('control_panel.html',mails=mails,title="Admin Панель")
 
 @app.route('/mail_request',methods=['POST','GET'])
@@ -100,8 +102,10 @@ def mail_request():
             name = request.form['name']
             email = request.form['email']
             text = request.form['message']
-            
-            mail_request = Mail_request(name=name,email=email,text=text)
+            tel = request.form['tel']
+            subject = request.form['subject']
+            client = request.form['client']
+            mail_request = Mail_request(name=name,subject=subject,client=client,tel=tel,email=email,text=text)
             try:
                 db.session.add(mail_request)
                 db.session.commit()
@@ -154,8 +158,10 @@ if __name__ == "__main__":
     db.create_all()
     global development_mode
     development_mode = True
-    y = threading.Thread(target=hp)
-    x = threading.Thread(target=hs)
-    y.start()
-    time.sleep(0.5)
-    x.start()
+    app.run(port=80,debug=development_mode , host ='0.0.0.0',use_reloader=False)
+    
+    #y = threading.Thread(target=hp)
+    #x = threading.Thread(target=hs)
+    #y.start()
+    #time.sleep(0.5)
+    #x.start()

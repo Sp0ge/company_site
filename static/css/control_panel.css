@@ -108,10 +108,14 @@ input[type=text]{
     color: white;
 }
 .del{
-    padding: 5px;
+    margin: 20px;
+    color: red;
+}
+.del input{
     background-color: red;
-    border-radius: 5px;
     color: white;
+    border-color: white;
+    font-weight: bolder;
 }
 a{
     text-decoration: none;
