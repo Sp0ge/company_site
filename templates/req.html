@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block html_head %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">  
+  <link href="{{ url_for('static', filename='css/home.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<section style="background-color:#a89971;" class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-12">
+        <div class="wrapper">
+          <div  class="row no-gutters">
+            <div style="background-color:#403c31; box-shadow: 60px -16px white;" class="col-md-7 d-flex align-items-stretch contact-form">
+              <div class="contact-wrap w-100 p-md-5 p-4">
+                <h3 class="mb-4">Оставить заявку</h3>
+                <div id="form-message-warning" class="mb-4"></div> 
+                <div id="form-message-success" class="mb-4">
+                </div>
+                <form method="POST" action="/mail_request">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Имя">
+                      </div>
+                    </div>
+                    <div class="col-md-6"> 
+                      <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Почта">
+                      </div>
+                    </div>
+                    <div class="col-md-6"> 
+                      
+                      <p><select name="client[]">
+                        <option selected value="Заказчик">Я заказчик</option>
+                        <option value="Исполнитель">Я исполнитель</option>
+                      </select></p>
+
+                    </div>
+                    <div class="col-md-6"> 
+                      <div class="form-group">
+                        <input type="tel" class="form-control" name="tel" id="tel" placeholder="Контактный номер">
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Вид услуг или требуемых работ">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <textarea name="message" class="form-control" id="message" cols="30" rows="7" placeholder="Описание задачи или услуг"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="submit" value="Отправить заявку" class="btn btn-primary">
+                        <div class="submitting"></div>
+                      </div>
+                    </div>
+                      <div class="recaptcha">
+                        {{ recaptcha }}
+                      </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.validate.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

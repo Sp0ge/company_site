@@ -4,16 +4,5 @@
   <link href="{{ url_for('static', filename='css/home.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 {% block content %}
-<form action="/mail_request" method="post">
-  <center>
-  <h1>Свяжитесь со мной</h1>
-      <input  autocomplete="off" maxlength="60" type="text" name="email" placeholder="Почта">
-      <input autocomplete="off" maxlength="60" type="text" name="name" placeholder="Имя">
-      <textarea autocomplete="off" maxlength="2000" name="message" placeholder="Сообщение"></textarea>
-      <input name="submit" type="submit" value="Отправить"> 
-      {{ recaptcha }}
-  </center>
-  Нажимая кнопку "Отправить" Вы даёте свое согласие</br> на обработку введенной персональной информации</br> в соответствии с Федеральным Законом №152-ФЗ </br>от 27.07.2006 "О персональных данных"
-  
-</form>
+
 {% endblock %}

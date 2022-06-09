@@ -62,7 +62,9 @@ def home():
 def about():
     return render_template('about.html', year=datetime.now().year ,title="О нас")
 
-
+@app.route('/req')
+def req():
+    return render_template('req.html', year=datetime.now().year ,title="Заявка")
 
 @app.route('/admin_log', methods=['GET','POST'])
 def admin_login():
