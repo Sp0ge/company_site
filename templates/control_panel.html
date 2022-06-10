@@ -1,6 +1,9 @@
 <head>
     <link href="{{ url_for('static', filename='css/navbar.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/control_panel.css') }}" type="text/css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 </head>
 <body>
     {%block body%}
@@ -10,32 +13,29 @@
             </ul>
         </nav>
         </center>
-        <center>
-            <div class="maincontent2">
-                <div class='mails'>
-                    <center>
-                        <h1>Заявки</h1>
-                        {%for em in mails%}
-                        <center>
-                            <div class='mail_block'>
-                            <h5>{{ em.date }}</5>
-                            <h4>{{ em.email }}</h4>
-                            <h4>{{ em.tel }}</h4>
-                            <h3>{{em.name}}</h3>
-                            <h3>{{em.subject}}</h3>
-                            <h3>{{em.client}}</h3>
-                            <pre class="text">{{ em.text }}</pre>
-                            <a class="ans" href="mailto:{{em.email}}">Почта</a>
-                            <a class="ans" href="tel:{{em.tel}}">Звонок</a>
+        {%for em in mails%}
+            <center>
+                <div class="card">
+
+                    <h1>{{em.client}}</h1>
+                    <div class="container">
+                        <h3>Дата заявки: {{ em.date }}</3>
+                        <div class="des">
+                            <h2>Вид услуг: {{em.subject}}</h2>
+                            <h2>Имя: {{em.name}}</h2>
+                            <pre>{{ em.text }}</pre>
                             <form action="/mail/{{em.id}}/del" onSubmit="return confirm('Для удаления заявки нажмите OK'); " class="del">
-                                <input name="del" type="submit" value="Удалить">
+                                <input class="delbutton" name="del" type="submit" value="Удалить">
                             </form>
-                            </div>
-                        </center>
-                    {% endfor %}
-                    </center>
-                </div>
-            </div>
-        </center>
+                            <a class="button" href="mailto:{{em.email}}">Почта</a>
+                            <a class="button" href="tel:{{em.tel}}">Звонок</a>
+
+
+                        </div>
+                    </div>
+                </div> 
+
+            </center>
+        {% endfor %}
     {% endblock %}
 </body>

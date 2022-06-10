@@ -17,7 +17,7 @@ recaptcha = ReCaptcha(app)
 app.secret_key='Lk2kIC1X1RpyJSkMqAfJJltF4JkUidId4S3cpmuzxmyyxjZw6IR17Ac75tA6XNS5HDtZKRHbDaQ9zHw8V2jMSaPGfSKO2dEnif63'
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'admin_log'
+login_manager.login_view = 'admin_login'
 
 
 
@@ -47,7 +47,7 @@ class Mail_request(db.Model):
     tel = db.Column(db.String(60), nullable=False)
     subject = db.Column(db.String(60), nullable=False)
     client = db.Column(db.String(60), nullable=False)
-    date = db.Column(db.DateTime, default=datetime.now().replace(microsecond=0))
+    date = db.Column(db.DateTime, default=datetime.now())
     def __repr__ (self):
         return '<Mail_request %r>' % self.id
 
@@ -69,7 +69,7 @@ def about():
 def req():
     return render_template('req.html', year=datetime.now().year ,title="Заявка")
 
-@app.route('/admin_log', methods=['GET','POST'])
+@app.route('/admin_login', methods=['GET','POST'])
 def admin_login():
     if current_user.is_authenticated:
         return redirect(url_for("control_panel"))
@@ -87,7 +87,7 @@ def admin_login():
             login_user(usr)
             return redirect(url_for("control_panel"))
    
-    return render_template('log.html')
+    return render_template('admin_login.html')
 
 @app.route('/control_panel',methods=['POST','GET'])
 @login_required
@@ -111,7 +111,7 @@ def mail_request():
                 db.session.commit()
                 return redirect('/home')
             except:
-                return 'Ошибка формы'
+                return 'Ошибка Формы'
         else:
             return redirect("/home")
 

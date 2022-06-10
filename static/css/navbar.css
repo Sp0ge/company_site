@@ -5,6 +5,7 @@
 body {
   margin: 0px;
   font-family: 'segoe ui';
+  padding: 0px;
 }
 
 .nav {
@@ -96,18 +97,31 @@ body {
     overflow-y: auto;
   }
 }
+.navbar{
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
 .navbar ul{
   list-style-type: none;
   margin: 10px;
   padding: 10px;
-  background-color: white;
+  background-color: black;
 }
 .navbar li{
-  font-style: ;
   font-weight: bolder;
   display: inline;
-  margin: 5px;
-  padding: 10px;
+  margin: 40px;
+  padding: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
   background-color: white;
   
+}
+.navbar a{
+  text-decoration: none;
+}
+.navbar li:hover{
+  background-color:green;
 }
