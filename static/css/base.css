@@ -4,10 +4,16 @@
 @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 
+html {
+	position: relative;
+	min-height: 100%;
+  }
+
 body {
 	font-size:22px;
 	line-height: 32px;
 	color: #000000;
+	margin-bottom: 60px;
 	background-color: #bebebe;;
 	margin: 0;
 	padding: 0;
@@ -343,3 +349,7 @@ section {
 	margin-bottom: 10px;
   }
   }
+.content{
+	height: auto;
+	min-height: 70%;
+}
