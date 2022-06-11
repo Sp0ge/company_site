@@ -74,10 +74,12 @@ def admin_login():
     if current_user.is_authenticated:
         return redirect(url_for("control_panel"))
     if request.method == 'POST':
+        ip = request.remote_addr
         user = request.form['username']
         password = request.form['password']
         password.replace(' ', '')
-        print("User is logging in control page")
+        logtime = datetime.now()
+        print(f"\n \n User: {user} is logging in control page from IP: {ip} -- {logtime} \n \n")
         user = User.query.filter_by(username=user).first()
         password = User.query.filter_by(password=password).first()
         if not user or not password:
@@ -98,7 +100,7 @@ def control_panel():
 @app.route('/mail_request',methods=['POST','GET'])
 def mail_request():
     if request.method == "POST":
-        if recaptcha.verify() or development_mode==True:
+        if recaptcha.verify():
             name = request.form['name']
             email = request.form['email']
             text = request.form['message']
@@ -157,11 +159,9 @@ def hp():
 if __name__ == "__main__":
     db.create_all()
     global development_mode
-    development_mode = True
-    app.run(port=80,debug=development_mode , host ='0.0.0.0',use_reloader=False)
-    
-    #y = threading.Thread(target=hp)
-    #x = threading.Thread(target=hs)
-    #y.start()
-    #time.sleep(0.5)
-    #x.start()
+    development_mode = False    
+    y = threading.Thread(target=hp)
+    x = threading.Thread(target=hs)
+    y.start()
+    time.sleep(0.5)
+    x.start()
