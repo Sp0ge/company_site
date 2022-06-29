@@ -1,8 +1,9 @@
 Flask
 jinja2
+flask_sslify
 Flask-ReCaptcha
 Flask-SQLAlchemy
 SQLAlchemy
 Flask-Login
 Werkzeug
-jinja2
+flask_talisman

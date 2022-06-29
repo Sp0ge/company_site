@@ -3,11 +3,15 @@ from flask_login import login_user,logout_user,current_user,login_required,Login
 from datetime import datetime,time
 import time
 import threading
+from flask_talisman import Talisman
+from flask_sslify import SSLify
 from flask_recaptcha import ReCaptcha
 from flask_sqlalchemy import SQLAlchemy 
 
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
+Talisman(app)
+sslify = SSLify(app)
 app.config['RECAPTCHA_SITE_KEY'] = '6LeGuVMgAAAAALJqOYDubfEMMPQLZl68jriPo7Aq'
 app.config['RECAPTCHA_SECRET_KEY'] = '6LeGuVMgAAAAAGqbYmntFNWZaE5QC57mlLO71CIB'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
