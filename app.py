@@ -12,7 +12,7 @@ app.config['RECAPTCHA_SITE_KEY'] = '6LeGuVMgAAAAALJqOYDubfEMMPQLZl68jriPo7Aq'
 app.config['RECAPTCHA_SECRET_KEY'] = '6LeGuVMgAAAAAGqbYmntFNWZaE5QC57mlLO71CIB'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqllite_database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/sqllite_database.db'
 db = SQLAlchemy(app)
 recaptcha = ReCaptcha(app)
 app.secret_key='Lk2kIC1X1RpyJSkMqAfJJltF4JkUidId4S3cpmuzxmyyxjZw6IR17Ac75tA6XNS5HDtZKRHbDaQ9zHw8V2jMSaPGfSKO2dEnif63'
@@ -152,10 +152,21 @@ def logout():
 
 def hs():
     context=('ssl/certificate.crt','ssl/key.pem')
-    app.run(port=443,ssl_context=context,debug=development_mode, host ='0.0.0.0',use_reloader=False)
+    app.run(
+        port=443,
+        ssl_context=context,
+        debug=development_mode,
+        host ='0.0.0.0',
+        use_reloader=False
+        )
     
 def hp():
-    app.run(port=80,debug=development_mode , host ='0.0.0.0',use_reloader=False)
+    app.run(
+        port=80,
+        debug=development_mode,
+        host ='0.0.0.0',
+        use_reloader=False
+        )
 
 if __name__ == "__main__":
     db.create_all()
