@@ -1,6 +1,6 @@
-from flask import Flask , render_template, url_for, request,redirect,flash
-from flask_login import login_user, logout_user, current_user, login_required, LoginManager
-from datetime import datetime, time
+from flask import Flask,render_template,url_for,request,redirect,flash
+from flask_login import login_user,logout_user,current_user,login_required,LoginManager
+from datetime import datetime,time
 import time
 import threading
 from flask_recaptcha import ReCaptcha
@@ -12,7 +12,7 @@ app.config['RECAPTCHA_SITE_KEY'] = '6LeGuVMgAAAAALJqOYDubfEMMPQLZl68jriPo7Aq'
 app.config['RECAPTCHA_SECRET_KEY'] = '6LeGuVMgAAAAAGqbYmntFNWZaE5QC57mlLO71CIB'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/sqllite_database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 db = SQLAlchemy(app)
 recaptcha = ReCaptcha(app)
 app.secret_key='Lk2kIC1X1RpyJSkMqAfJJltF4JkUidId4S3cpmuzxmyyxjZw6IR17Ac75tA6XNS5HDtZKRHbDaQ9zHw8V2jMSaPGfSKO2dEnif63'
@@ -60,7 +60,7 @@ def load_user(user_id):
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('index.html', year=datetime.now().year ,title="Главная")
+    return render_template('home.html', year=datetime.now().year ,title="Главная")
 
 @app.route('/about')
 def about():
@@ -171,7 +171,7 @@ def hp():
 if __name__ == "__main__":
     db.create_all()
     global development_mode
-    development_mode = False    
+    development_mode = True    
     y = threading.Thread(target=hp)
     x = threading.Thread(target=hs)
     y.start()
