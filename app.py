@@ -175,5 +175,5 @@ if __name__ == "__main__":
     y = threading.Thread(target=hp)
     x = threading.Thread(target=hs)
     y.start()
-    time.sleep(0.5)
+    time.sleep(2)
     x.start()
