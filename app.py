@@ -151,7 +151,7 @@ def logout():
 
 
 def hs():
-    context=('ssl/certificate.crt','ssl/key.pem')
+    context=('ssl/cert.crt','ssl/key.pem')
     app.run(
         port=443,
         ssl_context=context,
@@ -175,5 +175,5 @@ if __name__ == "__main__":
     y = threading.Thread(target=hp)
     x = threading.Thread(target=hs)
     y.start()
-    #time.sleep(0.5)
-    #x.start()
+    time.sleep(0.5)
+    x.start()
