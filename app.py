@@ -66,10 +66,6 @@ def load_user(user_id):
 def home():
     return render_template('home.html', year=datetime.now().year ,title="Главная")
 
-@app.route('/about')
-def about():
-    return render_template('about.html', year=datetime.now().year ,title="О нас")
-
 @app.route('/req')
 def req():
     return render_template('req.html', year=datetime.now().year ,title="Заявка")
@@ -120,10 +116,10 @@ def mail_request():
             except:
                 return 'Ошибка Формы'
         else:
-            return redirect("/home")
+            return redirect("/req")
 
     else:
-        return redirect("/home")
+        return redirect("/req")
 
 @app.route('/mail/<int:id>/del')
 @login_required
@@ -175,7 +171,7 @@ def hp():
 if __name__ == "__main__":
     db.create_all()
     global development_mode
-    development_mode = False    
+    development_mode = True    
     y = threading.Thread(target=hp)
     x = threading.Thread(target=hs)
     y.start()

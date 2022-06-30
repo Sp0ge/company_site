@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% block title %}{{title}}{% endblock %}
 {% block html_head %}
-  <link href="{{ url_for('static', filename='css/home.css') }}" type="text/css" rel="stylesheet">
+
 {% endblock %}
 {% block content %}
-<div class="image">
-	<img src="{{ url_for('static', filename='img/home_1.jpg') }}" width="100%" />
-	<!-- <h2>PMSA - Агенство по подбору частных производителей.</h2> -->
-</div>
+<section class="testimonials text-center bg-light">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-4">
+				<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+					<img class="img-fluid rounded-circle mb-3" src="{{ url_for('static', filename='img/Anton_main_1.jpg') }}" alt="..." />
+					<h5>Маринченко Антон</h5>
+					<p class="font-weight-light mb-0">"Отслеживаю взаимодействие заказчиков c исполнителями, слежу за качеством исполнения заказов и соблюдением обговорённых дедлайнов."</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</section>
+
 {% endblock %}
