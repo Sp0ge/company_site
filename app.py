@@ -1,3 +1,4 @@
+from pickle import FALSE
 from flask import Flask,render_template,url_for,request,redirect,flash
 from flask_login import login_user,logout_user,current_user,login_required,LoginManager
 from datetime import datetime,time
@@ -171,7 +172,7 @@ def hp():
 if __name__ == "__main__":
     db.create_all()
     global development_mode
-    development_mode = True    
+    development_mode = False    
     y = threading.Thread(target=hp)
     x = threading.Thread(target=hs)
     y.start()
