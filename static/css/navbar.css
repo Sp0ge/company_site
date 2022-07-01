@@ -7,7 +7,6 @@ body {
   font-family: 'segoe ui';
   padding: 0px;
 }
-
 .nav {
   height: 50px;
   width: 100%;
@@ -124,4 +123,5 @@ body {
 }
 .navbar li:hover{
   background-color:green;
+}
 }

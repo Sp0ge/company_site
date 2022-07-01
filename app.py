@@ -12,13 +12,13 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__, static_folder="static", static_url_path="/static")
 Talisman(app)
 sslify = SSLify(app)
+recaptcha = ReCaptcha(app)
 app.config['RECAPTCHA_SITE_KEY'] = '6LeGuVMgAAAAALJqOYDubfEMMPQLZl68jriPo7Aq'
 app.config['RECAPTCHA_SECRET_KEY'] = '6LeGuVMgAAAAAGqbYmntFNWZaE5QC57mlLO71CIB'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 db = SQLAlchemy(app)
-recaptcha = ReCaptcha(app)
 app.secret_key='Lk2kIC1X1RpyJSkMqAfJJltF4JkUidId4S3cpmuzxmyyxjZw6IR17Ac75tA6XNS5HDtZKRHbDaQ9zHw8V2jMSaPGfSKO2dEnif63'
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -101,20 +101,20 @@ def control_panel():
 @app.route('/mail_request',methods=['POST','GET'])
 def mail_request():
     if request.method == "POST":
-        if recaptcha.verify():
-            name = request.form['name']
-            email = request.form['email']
-            text = request.form['message']
-            tel = request.form['tel']
-            subject = request.form['subject']
-            client = request.form['client']
-            mail_request = Mail_request(name=name,subject=subject,client=client,tel=tel,email=email,text=text)
-            try:
-                db.session.add(mail_request)
-                db.session.commit()
-                return redirect('/home')
-            except:
-                return 'Ошибка Формы'
+        #if recaptcha.verify():
+        name = request.form['name']
+        email = request.form['email']
+        text = request.form['message']
+        tel = request.form['tel']
+        subject = request.form['subject']
+        client = request.form['client']
+        mail_request = Mail_request(name=name,subject=subject,client=client,tel=tel,email=email,text=text)
+        try:
+            db.session.add(mail_request)
+            db.session.commit()
+            return redirect('/home')
+        except:
+            return 'Ошибка Формы'
         else:
             return redirect("/req")
 

@@ -4,86 +4,40 @@
 	<link href="{{ url_for('static', filename='css/req_form.css') }}" rel="stylesheet" />
 {% endblock %}
 {% block content %}
-  <div class="row main-form">
-    <form method="POST" action="/mail_request">
-    
-    <div class="form-group">
-      <label for="name" class="cols-sm-2 control-label">Ваше Имя</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-          <input type="name" class="form-control" name="name" id="name" placeholder="Введите ваше имя"/>
-        </div>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label for="name" class="cols-sm-2 control-label">Ваша Почта</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-          <input type="email" class="form-control" name="email" id="email" placeholder="Введите вашу Почту"/>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="name" class="cols-sm-2 control-label">Ваш номер телефона</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-          <input type="phone" class="form-control" name="tel" id="tel" placeholder="Введите ваш номер"/>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="name" class="cols-sm-2 control-label">Вид услуг</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-          <input type="subject" class="form-control" name="subject" id="subject" placeholder="Введите вид услуг"/>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="name" class="cols-sm-2 control-label">Описание услуги</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-          <input type="text" class="form-control" name="text" id="text" placeholder="Описание|уточнение"/>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="name" class="cols-sm-2 control-label">Вы являйтесь:</label>
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-          <select class="select-req" name="client" id="client">
-            <option value="Заказчик">Заказчиком</option>
-            <option value="Исполнитель">Исполнителем</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="cols-sm-10">
-        <div class="input-group">
-          <div class="recaptcha">
-            {{ recaptcha }}
+<div class="container-fluid px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+      <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+          <div class="card">
+            <h5 class="text-center mb-4">Форма заявок</h5>
+              <form class="form-card" action="mail_request" method="POST">
+                  <div class="row justify-content-between text-left">
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">ФИО<span class="text-danger"> *</span></label> <input type="text" id="fname" name="name" placeholder="ФИО" onblur="validate(1)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex">
+                        <select name="client" class="selectpicker" size="2" multiple>
+                          <option value="Заказчик">Я Заказчик</option>
+                          <option value="Исполнитель">Я Исполнитель</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="row justify-content-between text-left">
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Почта<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="example@yourmail.ru" onblur="validate(3)"> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> <input type="phone" id="mob" name="tel" placeholder="+7xxxxxxxxxx" onblur="validate(4)"> </div>
+                  </div>
+                  <div class="row justify-content-center text-left">
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Вид услуг<span class="text-danger"> *</span></label> <input type="text" id="job" name="subject" placeholder="3D печать" onblur="validate(5)"> </div>
+                  </div>
+                  <div class="row justify-content-between text-left">
+                      <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Описание услуг<span class="text-danger"> *</span></label> <input type="text" id="ans" name="message" placeholder="Изготовление запчастей на 3D принтере" onblur="validate(6)"> </div>
+                  </div>
+                  {{ recaptcha }}
+                      <div class="row justify-content-end">
+                      <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Отправить заявку</button> </div>
+                  </div>
+              </form>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="form-group ">
-      <button type="submit" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Отправить</button>
-    </div>
-    
-    </form>
   </div>
+</div>
+
 {% endblock %}
