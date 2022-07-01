@@ -6,6 +6,7 @@ from flask_talisman import Talisman
 from flask_sslify import SSLify
 from flask_recaptcha import ReCaptcha
 from flask_sqlalchemy import SQLAlchemy 
+from markupsafe import escape
 
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
