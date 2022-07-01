@@ -1,5 +1,5 @@
-flask==1.1.2
-Flask-reCaptcha==0.4.2
+flask
+Flask-reCaptcha
 jinja2
 flask_sslify
 Flask-SQLAlchemy
