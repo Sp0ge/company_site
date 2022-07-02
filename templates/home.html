@@ -4,6 +4,18 @@
 
 {% endblock %}
 {% block content %}
+
+<header class="masthead">
+	<div class="container px-4 px-lg-3 d-flex h-70 align-items-center justify-content-center">
+		<div class="d-flex justify-content-center">
+			<div class="text-center" >
+				<h1 class="mx-auto my-2 text-uppercase">Private Manufacturers Selection Agency</h1>
+				<h3 class="text-white-50 mx-auto mt-2 mb-5">Подбор лучших и исполнителей.</h3>
+			</div>
+		</div>
+	</div>
+</header>
+
 <section class="features-icons bg-light text-center">
 	<div class="container">
 		<div class="row">
@@ -35,7 +47,14 @@
 <section class="testimonials text-center bg-light">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4">
+			<div class="col-lg-6">
+				<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+					<img class="img-fluid rounded-circle mb-3" src="{{ url_for('static', filename='img/Anton_main_1.jpg') }}" alt="..." />
+					<h5>Маринченко Антон</h5>
+					<p class="font-weight-light mb-0">"Отслеживаю взаимодействие заказчиков c исполнителями, слежу за качеством исполнения заказов и соблюдением обговорённых дедлайнов."</p>
+				</div>
+			</div>
+			<div class="col-lg-6">
 				<div class="testimonial-item mx-auto mb-5 mb-lg-0">
 					<img class="img-fluid rounded-circle mb-3" src="{{ url_for('static', filename='img/Anton_main_1.jpg') }}" alt="..." />
 					<h5>Маринченко Антон</h5>

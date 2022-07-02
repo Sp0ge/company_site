@@ -21,8 +21,8 @@
                     <div class="container">
                         <h3>Дата заявки: {{ em.date }}</3>
                         <div class="des">
-                            <h2>Вид услуг: {{em.subject}}</h2>
-                            <h2>Имя: {{em.name}}</h2>
+                            <h2>ФИО: {{em.name}}</h2>
+                            <h2>Услуга(и): {{em.subject}}</h2>
                             <pre>{{ em.text }}</pre>
                             <form action="/mail/{{em.id}}/del" onSubmit="return confirm('Для удаления заявки нажмите OK'); " class="del">
                                 <input class="delbutton" name="del" type="submit" value="Удалить">

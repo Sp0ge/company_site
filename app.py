@@ -172,7 +172,7 @@ def hp():
 if __name__ == "__main__":
     db.create_all()
     global development_mode
-    development_mode = False    
+    development_mode = True    
     y = threading.Thread(target=hp)
     x = threading.Thread(target=hs)
     y.start()
