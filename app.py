@@ -11,7 +11,7 @@ from markupsafe import Markup
 
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
-Talisman(app)
+#Talisman(app)
 sslify = SSLify(app)
 recaptcha = ReCaptcha(app)
 app.config['RECAPTCHA_SITE_KEY'] = '6LeGuVMgAAAAALJqOYDubfEMMPQLZl68jriPo7Aq'
