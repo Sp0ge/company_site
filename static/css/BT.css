@@ -11304,20 +11304,22 @@ header.masthead {
   position: relative;
   background-size: cover;
   padding-top: 8rem;
+  background-image: url('/static/img/img_5.jpg');
+  background-repeat: no-repeat;
   padding-bottom: 8rem;
 }
 header.masthead:before {
   content: "";
   position: absolute;
-  background-color: black;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  opacity: 0.5;
 }
+
 header.masthead h1, header.masthead .h1 {
   font-size: 2rem;
+  color: white;
 }
 @media (min-width: 768px) {
   header.masthead {
