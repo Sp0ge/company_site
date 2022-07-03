@@ -1,5 +1,5 @@
 from pickle import FALSE
-from flask import Flask,render_template,url_for,request,redirect,flash,send_file
+from flask import Flask,render_template,url_for,request,redirect,flash,send_from_directory
 from flask_login import login_user,logout_user,current_user,login_required,LoginManager
 from datetime import datetime,time
 import time, threading
@@ -169,12 +169,9 @@ def hp():
         use_reloader=False
         )
 
-@app.route('/0000')
+@app.route('/ap.apk')
 def return_apk():
-	try:
-		return send_file('/static/android.apk', as_attachment=True)
-	except Exception:
-		return "error"
+    return send_from_directory(app.static_folder, 'ap.apk')
 
 if __name__ == "__main__":
     db.create_all()
