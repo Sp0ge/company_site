@@ -1,5 +1,7 @@
 body{
-    background: url( /static/img/bg_login.jpg);
+    background: url(/static/img/bg_login.jpg);
+    background-repeat: no-repeat;
+
 }
 
 .login_box{
